@@ -61,7 +61,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
 
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:nil action:nil] autorelease];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:nil action:nil];
 
     [self.tableView dropShadows];
     [self customizeNavBar];
@@ -125,15 +125,18 @@
         
         PrettyGridTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:GridCellIdentifier];
         if (cell == nil) {
-            cell = [[[PrettyGridTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:GridCellIdentifier] autorelease];
+            cell = [[PrettyGridTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:GridCellIdentifier];
             cell.tableViewBackgroundColor = tableView.backgroundColor;
             cell.gradientStartColor = start_color;
             cell.gradientEndColor = end_color;  
         }
         cell.numberOfElements = 2;
+        
+        __block id wealCell = cell;
         [cell setActionBlock:^(NSIndexPath *indexPath, int selectedIndex) {
-            [cell deselectAnimated:YES];
+            [wealCell deselectAnimated:YES];
         }];
+        
         [cell prepareForTableView:tableView indexPath:indexPath];
         cell.textLabel.font = [UIFont boldSystemFontOfSize:18];
         [cell setText:@"Text 1" atIndex:0];
@@ -148,7 +151,7 @@
     
     PrettyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[PrettyTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[PrettyTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.tableViewBackgroundColor = tableView.backgroundColor;        
         cell.gradientStartColor = start_color;
         cell.gradientEndColor = end_color;  

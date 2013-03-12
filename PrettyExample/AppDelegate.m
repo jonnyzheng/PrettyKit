@@ -14,23 +14,14 @@
 @synthesize window = _window;
 @synthesize tabBarController;
 
-- (void)dealloc
-{
-    self.tabBarController = nil;
-    [_window release];
-    [super dealloc];
-}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
+    self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = self.tabBarController;
 
-    
     [self.window makeKeyAndVisible];
     return YES;
 }

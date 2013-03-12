@@ -25,8 +25,7 @@
 -(void)onComposeClick:(id)sender
 {
 	ModalViewController *modalView = [[ModalViewController alloc] initWithNibName:@"ModalViewController" bundle:nil];
-	[self presentModalViewController:modalView animated:YES];
-    [modalView release];
+    [self presentViewController:modalView animated:YES completion:NULL];
 }
 
 #pragma mark - View lifecycle
@@ -42,10 +41,9 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.navigationItem.title = @"PrettyKit";
 
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] 
-						  initWithBarButtonSystemItem:UIBarButtonSystemItemCompose 
-											   target:self 
-											   action:@selector(onComposeClick:)] autorelease];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose 
+                                                                                           target:self 
+                                                                                           action:@selector(onComposeClick:)];
     self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]];
 }
 
@@ -123,7 +121,7 @@
     
     PrettyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[PrettyTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[PrettyTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.tableViewBackgroundColor = tableView.backgroundColor;        
     }
     
@@ -131,26 +129,29 @@
         case 1:
             switch (indexPath.row) {
                 case 0:
+                {
                     segmentedCell = [tableView dequeueReusableCellWithIdentifier:SegmentedCellIdentifier];
                     if (segmentedCell == nil) {
-                        segmentedCell = [[[PrettySegmentedControlTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SegmentedCellIdentifier] autorelease];
+                        segmentedCell = [[PrettySegmentedControlTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SegmentedCellIdentifier];
                     }
                     [segmentedCell prepareForTableView:tableView indexPath:indexPath];
                     segmentedCell.titles = [NSArray arrayWithObjects:@"1", @"2", @"3", @"4", nil];
                     segmentedCell.tableViewBackgroundColor = tableView.backgroundColor;
                     return segmentedCell;
-                default:
+                }
                     break;
             }
-
             break;
         case 2:
+        {
             gridCell = [tableView dequeueReusableCellWithIdentifier:GridCellIdentifier];
+            __block id weakGridCell = gridCell;
+            
             if (gridCell == nil) {
-                gridCell = [[[PrettyGridTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:GridCellIdentifier] autorelease];
+                gridCell = [[PrettyGridTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:GridCellIdentifier];
                 gridCell.tableViewBackgroundColor = tableView.backgroundColor;
                 gridCell.actionBlock = ^(NSIndexPath *indexPath, int selectedIndex) {
-                    [gridCell deselectAnimated:YES];
+                    [weakGridCell deselectAnimated:YES];
                 };                
             }
             [gridCell prepareForTableView:tableView indexPath:indexPath];            
@@ -162,13 +163,18 @@
             [gridCell setText:@"Three" atIndex:2];
             [gridCell setDetailText:@"Detail Text" atIndex:2];            
             return gridCell;
+        }
+            break;
         case 4:
+        {
             gridCell = [tableView dequeueReusableCellWithIdentifier:GridCellIdentifier];
+            __block id weakGridCell = gridCell;
+            
             if (gridCell == nil) {
-                gridCell = [[[PrettyGridTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:GridCellIdentifier] autorelease];
+                gridCell = [[PrettyGridTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:GridCellIdentifier];
                 gridCell.tableViewBackgroundColor = tableView.backgroundColor;
                 gridCell.actionBlock = ^(NSIndexPath *indexPath, int selectedIndex) {
-                    [gridCell deselectAnimated:YES];
+                    [weakGridCell deselectAnimated:YES];
                 };                
             }
             [gridCell prepareForTableView:tableView indexPath:indexPath];            
@@ -176,7 +182,8 @@
             [gridCell setText:@"Four" atIndex:0];
             [gridCell setText:@"Five" atIndex:1];            
             return gridCell;
-
+        }
+            break;
         default:
             break;
     }
