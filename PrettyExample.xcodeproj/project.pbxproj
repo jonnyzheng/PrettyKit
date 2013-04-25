@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		572B2E6615348E1B0002228B /* RotableTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 572B2E6515348E1B0002228B /* RotableTabBarController.m */; };
 		572B2E6A153496880002228B /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 572B2E68153496870002228B /* background.png */; };
 		572B2E6B153496880002228B /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 572B2E69153496870002228B /* background@2x.png */; };
 		5735F8BC14FD2FFC00DD7370 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5735F8BB14FD2FFC00DD7370 /* UIKit.framework */; };
@@ -39,8 +38,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		572B2E6415348E1B0002228B /* RotableTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotableTabBarController.h; sourceTree = "<group>"; };
-		572B2E6515348E1B0002228B /* RotableTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotableTabBarController.m; sourceTree = "<group>"; };
 		572B2E68153496870002228B /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		572B2E69153496870002228B /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		5735F8B714FD2FFC00DD7370 /* PrettyExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrettyExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,8 +145,6 @@
 				57CF9FAE151BA08600BC035B /* PlainExample.h */,
 				57CF9FAF151BA08600BC035B /* PlainExample.m */,
 				57CF9FB0151BA08600BC035B /* PlainExample.xib */,
-				572B2E6415348E1B0002228B /* RotableTabBarController.h */,
-				572B2E6515348E1B0002228B /* RotableTabBarController.m */,
 				572B2E68153496870002228B /* background.png */,
 				572B2E69153496870002228B /* background@2x.png */,
 			);
@@ -278,7 +273,6 @@
 				5735F8CC14FD2FFC00DD7370 /* AppDelegate.m in Sources */,
 				57A6337614FE7672004D2647 /* ExampleViewController.m in Sources */,
 				57CF9FB1151BA08600BC035B /* PlainExample.m in Sources */,
-				572B2E6615348E1B0002228B /* RotableTabBarController.m in Sources */,
 				578998C41535E02000E06FCA /* PrettyCustomViewTableViewCell.m in Sources */,
 				578998C51535E02000E06FCA /* PrettyGridTableViewCell.m in Sources */,
 				578998C61535E02000E06FCA /* PrettySegmentedControlTableViewCell.m in Sources */,
@@ -363,6 +357,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jesse Squires (64KYPKJ7RK)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jesse Squires (64KYPKJ7RK)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -382,6 +377,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jesse Squires (64KYPKJ7RK)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jesse Squires (64KYPKJ7RK)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
