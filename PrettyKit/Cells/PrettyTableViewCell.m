@@ -129,9 +129,9 @@ typedef enum {
     switch (type) 
     {
         case CellBackgroundGradientSelected:
-            return [self.cell newSelectionGradient];
+            return [self.cell createSelectionGradient];
         default:
-            return [self.cell newNormalGradient];
+            return [self.cell createNormalGradient];
     }
 }
 
@@ -579,11 +579,6 @@ typedef enum {
 
 - (CGGradientRef) createSelectionGradient
 {
-    return [self newSelectionGradient];
-}
-
-- (CGGradientRef) newSelectionGradient
-{
     CGFloat locations[] = { 0, 1 };    
     
     NSArray *colors = [NSArray arrayWithObjects:(id)self.selectionGradientStartColor.CGColor, (id)self.selectionGradientEndColor.CGColor, nil];
@@ -596,11 +591,6 @@ typedef enum {
 
 - (CGGradientRef) createNormalGradient
 {
-    return [self newNormalGradient];
-}
-
-- (CGGradientRef) newNormalGradient
-{
     CGFloat locations[] = { 0, 1 };    
     
     NSArray *colors = [NSArray arrayWithObjects:(id)self.gradientStartColor.CGColor, (id)self.gradientEndColor.CGColor, nil];
@@ -609,28 +599,6 @@ typedef enum {
     CGColorSpaceRelease(colorSpace);
     
     return gradient;
-}
-
-#pragma mark - Deprecated stuff
-
-- (BOOL) showsCustomSeparator
-{
-    return self.customSeparatorStyle != UITableViewCellSeparatorStyleNone;
-}
-
-- (void) setShowsCustomSeparator:(BOOL)showsCustomSeparator
-{
-    switch (showsCustomSeparator)
-    {
-        case YES:
-            self.customSeparatorStyle = UITableViewCellSeparatorStyleSingleLine;
-            break;
-        case NO:
-            self.customSeparatorStyle = UITableViewCellSeparatorStyleNone;
-            break;            
-    }
-    
-    
 }
 
 @end

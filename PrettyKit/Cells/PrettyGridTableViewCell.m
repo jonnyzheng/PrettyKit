@@ -209,7 +209,7 @@
 {
     if (self.cell.gradientStartColor && self.cell.gradientEndColor) 
     {
-        CGGradientRef gradient = [(PrettyTableViewCell *)self.cell newNormalGradient];
+        CGGradientRef gradient = [(PrettyTableViewCell *)self.cell createNormalGradient];
         [PrettyDrawing drawGradient:gradient rect:rect];
         CGGradientRelease(gradient);
         return;

@@ -167,14 +167,6 @@ typedef enum {
  This property has a clearColor by default.  */
 @property (nonatomic, retain) UIColor *tableViewBackgroundColor;
 
-/** Specifies if a custom separator should be drawn. 
- 
- By default it's set to `YES`.
- 
- @bug **Deprecated** Use customSeparatorStyle instead.
- */
-@property (nonatomic, assign) BOOL showsCustomSeparator __attribute__ ((deprecated));
-
 /** Specifies the style of the separator. 
  
  By default it's set to `UITableViewCellSeparatorStyleSingleLine`.*/
@@ -250,27 +242,9 @@ typedef enum {
 @property (nonatomic, readonly) CAShapeLayer *mask;
 
 /** Returns a new gradient with the configured selection gradient colors. */
-- (CGGradientRef) newSelectionGradient;
+- (CGGradientRef) createSelectionGradient;
 
 /** Returns a new gradient with the configured normal gradient colors. */
-- (CGGradientRef) newNormalGradient;
-
-
-
-/** **Deprecated** Returns a new gradient with the configured selection gradient colors. 
- 
- You have to release it after using it.
- 
- @bug **Deprecated** Use newSelectionGradient: instead.
- */
-- (CGGradientRef) createSelectionGradient __attribute__ ((deprecated,cf_returns_retained));
-
-/** **Deprecated** Returns a new gradient with the configured normal gradient colors. 
- 
- You have to release it after using it.
- 
- @bug **Deprecated** Use newNormalGradient: instead.
- */
-- (CGGradientRef) createNormalGradient __attribute__ ((deprecated,cf_returns_retained));
+- (CGGradientRef) createNormalGradient;
 
 @end
